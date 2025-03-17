@@ -76,4 +76,16 @@ function limparCampo(id){
 }
 
 
+function sortearAmigo() {
 
+    let resultado = recuperarValorPeloId('resultado');
+
+    let nomeSorteado = "";
+    if(!(amigos.length === 0)) {
+        
+        nomeSorteado = amigos[Math.floor(Math.random() * amigos.length)];
+        alert(nomeSorteado);
+
+    } 
+
+}
