@@ -3,9 +3,15 @@
 
 // Variáveis das funções
 let amigos = [];
+let amigo = '';
+let listaAmigos = '';
+let resultado = '';
 // Variáveis id do HTML
 let idAmigo = 'amigo';
 let idListaAmigos = 'listaAmigos';
+let idResultado = 'resultado';
+
+
 
 
 //Adiciona o nome na lista de amigos e na página HTML
@@ -23,12 +29,14 @@ function adicionarAmigo() {
 function sortearAmigo() {
 
     let nomeSorteado = "";
-    let resultado = recuperarValorPeloId('resultado');
+    resultado = recuperarValorPeloId(idResultado);
         
     if(!(amigos.length === 0)) {
         
         nomeSorteado = amigos[Math.floor(Math.random() * amigos.length)];
-        resultado.innerHTML = nomeSorteado;
+        resultado.innerHTML = "O amigo secreto sorteado é: " + nomeSorteado;
+        amigos = [];
+        listaAmigos.innerHTML = '';
 
     } 
 
@@ -38,7 +46,7 @@ function sortearAmigo() {
 function adicionarNomeListaAmigos() {
 
     // Capturar o elemento HTML amigo
-    let amigo = recuperarValorPeloId(idAmigo);  
+    amigo = recuperarValorPeloId(idAmigo);  
 
     //Remove os espaços
     amigo = amigo.value.trim();
@@ -60,8 +68,9 @@ function adicionarNomeListaAmigos() {
 function adicionarNomeListaAmigosHtml() {
     
     // Capturar o elemento HTML listaAmigos 
-    let listaAmigos = recuperarValorPeloId(idListaAmigos);
+    listaAmigos = recuperarValorPeloId(idListaAmigos);
     listaAmigos.innerHTML = "";
+    resultado.innerHTML = "";
 
     amigos.forEach(function(nome) {
         
