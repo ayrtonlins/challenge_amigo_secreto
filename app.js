@@ -34,6 +34,7 @@ function adionarValorListaAmigos(amigo) {
 
 // Limpar o campo de entrada
 function limparCampo(id){
+    
     document.getElementById(id).value = '';
 }
 
