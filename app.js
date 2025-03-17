@@ -1,41 +1,78 @@
 //Projeto Challenge Amigo Secreto 
 
-let amigos = []
+
+// Variáveis das funções
+let amigos = [];
+// Variáveis id do HTML
+let idAmigo = 'amigo';
+let idListaAmigos = 'listaAmigos';
 
 
 function adicionarAmigo() {
-    
-    // Capturar o valor do campo de entrada
-    let amigo = recuperarValorPeloId('amigo');  
 
-    // Validação para garantir que o campo não esteja vazio
+    // Adiciona o amigo a lista de amigos
+    if (adicionarNomeListaAmigos()) {
+        // Adiciona o amigo a lista de amigos no HTML
+        adicionarNomeListaAmigosHtml();   
+    } 
+
+}
+
+
+// Adicionar o nome do amigo a lista de amigos
+function adicionarNomeListaAmigos() {
+
+    // Capturar o elemento HTML amigo
+    let amigo = recuperarValorPeloId(idAmigo);  
+
+    //Remove os espaços
+    amigo = amigo.value.trim();
+
     if (amigo === "") {
         alert("Por favor, insira um nome.");
+        return false;
+    } else if (amigos.includes(amigo)) {
+        alert("O nome já consta na lista");
+        return false;
     } else {
-        adionarValorListaAmigos(amigo);
-        limparCampo('amigo');
+        amigos.push(amigo);
+        limparCampo(idAmigo);
+        return true;
     }
-        alert(amigos);
-      
+
+}
+
+function adicionarNomeListaAmigosHtml() {
+    
+    // Capturar o elemento HTML listaAmigos 
+    let listaAmigos = recuperarValorPeloId(idListaAmigos);
+    listaAmigos.innerHTML = "";
+
+    amigos.forEach(function(nome) {
+        
+        //Cria elemento <li>
+        let itemLi = document.createElement('li');
+        itemLi.textContent = nome;
+        listaAmigos.appendChild(itemLi);
+
+    });
+
 }
 
 
 // Recuperar o valor do campo pelo ID informado
 function recuperarValorPeloId(id) {
       
-      return document.getElementById(id).value.trim();   
+    return document.getElementById(id); 
+
 }
 
-// Adicionar o nome do amigo a lista de amigos
-function adionarValorListaAmigos(amigo) {
-    
-    amigos.push(amigo);
-}
 
 // Limpar o campo de entrada
 function limparCampo(id){
     
     document.getElementById(id).value = '';
+
 }
 
 
