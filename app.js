@@ -8,6 +8,7 @@ let idAmigo = 'amigo';
 let idListaAmigos = 'listaAmigos';
 
 
+//Adiciona o nome na lista de amigos e na página HTML
 function adicionarAmigo() {
 
     // Adiciona o amigo a lista de amigos
@@ -18,6 +19,20 @@ function adicionarAmigo() {
 
 }
 
+// Realizar o sorteio 
+function sortearAmigo() {
+
+    let nomeSorteado = "";
+    let resultado = recuperarValorPeloId('resultado');
+        
+    if(!(amigos.length === 0)) {
+        
+        nomeSorteado = amigos[Math.floor(Math.random() * amigos.length)];
+        resultado.innerHTML = nomeSorteado;
+
+    } 
+
+}
 
 // Adicionar o nome do amigo a lista de amigos
 function adicionarNomeListaAmigos() {
@@ -76,16 +91,3 @@ function limparCampo(id){
 }
 
 
-function sortearAmigo() {
-
-    let resultado = recuperarValorPeloId('resultado');
-
-    let nomeSorteado = "";
-    if(!(amigos.length === 0)) {
-        
-        nomeSorteado = amigos[Math.floor(Math.random() * amigos.length)];
-        alert(nomeSorteado);
-
-    } 
-
-}
